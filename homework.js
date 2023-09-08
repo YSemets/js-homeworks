@@ -11,18 +11,18 @@ const calculate = (a, b, c) => {
     if (d > 0){
         const x1 = (-b + sqrt)/ (2 * a);
         const x2 = (-b - sqrt)/ (2 * a);
-        return ["x1:",x1, "x2:",x2];
+        return { x1: x1, x2: x2 };
 
     } else if (d === 0){
         const x1 = -b / (2 * a);
-        return [x1];
+        return { x1: x1 };
 
     } else (d < 0 )
-        return ['No roots'];
+        return { x1: null, x2: null };
         
 };
 
-const roots = calculate(1, 5, 6);
+const roots = calculate(1, 2, 5);
 {
     console.log (roots);
     //   x1: -2,
@@ -32,6 +32,7 @@ const roots = calculate(1, 5, 6);
 
 
 /*--------------Factorial--------------*/
+
 let res = 1;
 const factorial = (num) => {
     for (i = 1; i<=num; i++){
@@ -46,84 +47,75 @@ const factorial = (num) => {
 
 /*--------------Calculator--------------*/
 
-function  addition(...args) {
-    const nums = args[0];
-    let result = 0; 
-    for (let i = 0; i < nums.length; i++) {
-          result += nums[i];
+function addition(...args) {
+  let result = 0; 
+  for (let i = 0; i < args.length; i++) {
+      result += args[i];
   }
-    return result;
+  return result;
 }
 
 function subtraction(...args) {
-    const nums = args[0];
-    let result = 0;
-    for (let i = 0; i < nums.length; i++) {
-        if(result === 0) { result  = nums[i]; continue}
-          result -= nums[i];        
+  let result = args[0]; 
+  for (let i = 1; i < args.length; i++) {
+      result -= args[i];        
   }
-    return result;
+  return result;
 }
 
-function  multiplication(...args) {
-    const nums = args[0];
-    let result = 1; 
-    for (let i = 0; i < nums.length; i++) {
-          result *= nums[i];
+function multiplication(...args) {
+  let result = 1; 
+  for (let i = 0; i < args.length; i++) {
+      result *= args[i];
   }
-    return result;
+  return result;
 }
 
 function division(...args) {
-    const nums = args[0];
-    let result = 0;
-    for (let i = 0; i < nums.length; i++) {
-        if(result === 0) { result  = nums[i]; continue}
-          result /= nums[i];        
+  let result = args[0];
+  for (let i = 1; i < args.length; i++) {
+      result /= args[i];        
   }
-    return result;
+  return result;
 }
 
-
 const calculate = (callback, ...args) => {
+  return callback(...args);
+};
 
-    return callback(args);
-
-  };
 
 
   
-  const result = calculate(addition, 1, 1, 1, 1);
-  console.log (result);
+  const totalAdd = calculate(addition, 1, 1, 1, 1);
+  console.log (totalAdd);
   // 1 + 1 + 1 + 1 = 4
-  const result = calculate(subtraction, 20, 10, 5);
-  console.log (result);
+  const totalSub = calculate(subtraction, -2, -2, 3);
+  console.log (totalSub);
   // 20 - 10 - 5 = 5
-  const result = calculate(multiplication, 2, 10, 2);
-  console.log (result);
+  const totalMul= calculate(multiplication, 2, 10, 2);
+  console.log (totalMul);
   // 2 * 10 * 2 = 40
-  const result = calculate(division, 20, 10, 2);
-  console.log (result);
+  const totalDiv = calculate(division, 20, 10, 2);
+  console.log (totalDiv);
   // 20 / 10 / 2 = 1
 
-  
+
 
 /*--------------Fibonacci--------------*/
 
 const fib = (n) => {
+  let a = '1', b = '1', temp;
+  const sequence = [a, b];
 
-    var a = 1, b = 1, temp;
-    const sequence = [a, b]; 
-
-    while (n >= 3){
+  while (n >= 3) {
       temp = a;
-      a = a + b;
+      a = (parseInt(a) + parseInt(b)).toString();
       b = temp;
       sequence.push(a);
       n--;
-    }
-  
-    return sequence;
+  }
+
+  return sequence;
 };
   
   const result = fib(5);
@@ -155,3 +147,5 @@ const printPyramid = (n) => {
   // ##*****##
   // #*******#
   // *********
+
+
