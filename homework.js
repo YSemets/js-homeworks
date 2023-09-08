@@ -2,31 +2,38 @@
 
 
 const calculate = (a, b, c) => {
-    const d = b*b - (4*a*c);
-    //console.log (d);
+  const d = b*b - (4*a*c);
+  //console.log (d);
 
-    const sqrt = Math.sqrt(d);//9
-    //console.log(sqrt); // 3
+  const sqrt = Math.sqrt(d);//9
+  //console.log(sqrt); // 3
 
-    if (d > 0){
-        const x1 = (-b + sqrt)/ (2 * a);
-        const x2 = (-b - sqrt)/ (2 * a);
-        return { x1: x1, x2: x2 };
+  let roots = {};
 
-    } else if (d === 0){
-        const x1 = -b / (2 * a);
-        return { x1: x1 };
+  if (d > 0){
+      const x1 = (-b + sqrt)/ (2 * a);
+      const x2 = (-b - sqrt)/ (2 * a);
+      roots.x1 = x1;
+      roots.x2 = x2;
 
-    } else (d < 0 )
-        return { x1: null, x2: null };
-        
+  } else if (d === 0){
+      const x1 = -b / (2 * a);
+      roots.x1 = x1;
+
+  } else {
+      roots.x1 = null;
+      roots.x2 = null;
+  }
+
+
+  return roots;    
 };
 
-const roots = calculate(1, 2, 5);
+const result = calculate(1, 5, 6);
 {
-    console.log (roots);
-    //   x1: -2,
-    //   x2: -3,
+  console.log (result);
+  //   x1: -2,
+  //   x2: -3,
 };
 
 
