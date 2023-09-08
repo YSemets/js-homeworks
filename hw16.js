@@ -1,6 +1,6 @@
 
 
-/*========================================*/
+/*==============Reverse str==========================*/
 
 const strReverse = () => {
   let str = 'hello';
@@ -16,11 +16,11 @@ strReverse();
 
 
 
-/*========================================*/
+/*=============Count words===========================*/
 
 
 const countWords = (str) => {
-  let arr = str.split(/\s+/).length;
+  const arr = str.split(/\s+/).length;
 
   console.log (arr);
 };
@@ -29,7 +29,7 @@ countWords("Hi my name is Taras");
 // 5
 
 
-/*========================================*/
+/*===============Clear whitespace=========================*/
 
 
 const clearWhiteSpace = (str) => {
@@ -44,7 +44,7 @@ const result = clearWhiteSpace("  1   2   ");
 
 
 
-/*========================================*/
+/*=============Max length===========================*/
 
 
 const cutStr = (str, maxLength) => {
@@ -62,7 +62,7 @@ cutStr("Hello there", 5);
 
 
 
-/*========================================*/
+/*================Palindrome========================*/
 
 const palindrome = (str) => {
   const temp = str.length;
@@ -70,16 +70,16 @@ const palindrome = (str) => {
 
   for (let i = 0; i < calc ; i++) {
     if (str.charAt(i) !== str.charAt(temp - 1 - i)) {
-      console.log('false');
+      return false;
     }else{
-      console.log('true');
+      return true;
     }
   }
   
 };
 
-palindrome("tenet");
+console.log(palindrome("tenet"));
 // true
-//palindrome("js");
+//console.log(palindrome("js"));
 // false
 
