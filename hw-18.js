@@ -187,7 +187,7 @@ function isArmstrong(n){
     const toArray = n.toString().split('').map(Number);
     const newNum = toArray.map(a => {return a**3}).reduce((a, b) => a + b);
 
-    if(newNum == n){
+    if(newNum === n){
         return true;
     }else{
         return false;
