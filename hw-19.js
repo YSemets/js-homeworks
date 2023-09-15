@@ -28,12 +28,12 @@ console.log(getDays);
 
 function getDayNumber(dateString) {
     const date = new Date(dateString);
-    const day = date.getDate();
+    const day = Math.floor((date - new Date(date.getFullYear(), 0, 0)) / 1000 / 60 / 60 / 24);
     return day;
 }
 
 const result = getDayNumber("2023-01-12");
-console.log(result); // 12
+console.log(result);
 // 12
 
 const result = getDayNumber("2023-02-26");
