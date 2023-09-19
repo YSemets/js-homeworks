@@ -17,24 +17,28 @@ console.log(result);
 
 
 
-function formatMoney(num){
+function formatMoney(num) {
+    if (typeof num !== 'number' || isNaN(num)) {
+        return 'Invalid input';
+    }
 
-    const numString = num.toLocaleString("en-US", {
+    const isNegative = num < 0; 
+    const absoluteNumber = Math.abs(num);
+
+    const numString = absoluteNumber.toLocaleString("en-US", {
         style: "decimal",
         minimumFractionDigits: 2,
         maximumFractionDigits: 2
     });
 
-    return numString;
-};
+    return isNegative ? '-' + numString : numString;
+}
 
-const formattedMoney = formatMoney(1232323);
-console.log(formattedMoney); 
-//"1,232,323.00"
+const formattedMon = formatMoney(1232323);
+console.log(formattedMon); // "1,232,323.00"
 
-const formattedMoney = formatMoney(-23.2132);
-console.log(formattedMoney);
-//'- 23.21'
+const formattedMon = formatMoney(-23.2132);
+console.log(formattedMon); // "-23.21"
 
 
 
@@ -187,7 +191,7 @@ function isArmstrong(n){
     const toArray = n.toString().split('').map(Number);
     const newNum = toArray.map(a => {return a**3}).reduce((a, b) => a + b);
 
-    if(newNum == n){
+    if(newNum === n){
         return true;
     }else{
         return false;
