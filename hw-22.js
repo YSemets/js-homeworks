@@ -8,8 +8,12 @@ const faculty = {
   facultyName: "",
   groups: [],
   enlistStudent(studentName){
-    const students = Array(12).fill({name: studentName});
-    this.groups = [...this.groups, {group: studentName, students}];
+    const student = { name: studentName };
+    if (this.groups.length === 0) {
+      this.groups.push([student]);
+    } else {
+      this.groups[this.groups.length - 1].push(student);
+    }
   },
   __proto__: university,
 };
